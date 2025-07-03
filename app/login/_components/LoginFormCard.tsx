@@ -1,28 +1,24 @@
 import { AtSignSVG } from "@/components/svgs/AtSign"
-import { OpenEyeSVG, ClosedEyeSVG } from "@/components/svgs/EyeSVG"
+import { ClosedEyeSVG, OpenEyeSVG } from "@/components/svgs/EyeSVG"
 import { GithubSVG } from "@/components/svgs/GithubSVG"
 import { GoogleSVG } from "@/components/svgs/GoogleSVG"
 import Link from "next/link"
-import { Dispatch, FormEvent, SetStateAction } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
+import { useFormContext } from "react-hook-form"
+import { TUser } from "../page"
 
 interface Props {
-  handleLogin: (e: FormEvent<Element>) => void
-  email: string
-  setEmail: Dispatch<SetStateAction<string>>
-  password: string
-  setPassword: Dispatch<SetStateAction<string>>
-  showPassword: boolean
-  setShowPassword: Dispatch<SetStateAction<boolean>>
+  setUser: Dispatch<SetStateAction<TUser | undefined>>
 }
-export const LoginFormCard = ({
-  handleLogin,
-  email,
-  setEmail,
-  password,
-  setPassword,
-  showPassword,
-  setShowPassword,
-}: Props) => {
+
+export const LoginFormCard = ({ setUser }: Props) => {
+  const [showPassword, setShowPassword] = useState(false)
+  const { register, handleSubmit } = useFormContext<TUser>()
+
+  function handleLogin(data: TUser) {
+    setUser(data)
+  }
+
   return (
     <div className="w-full max-w-4xl mx-auto">
       {/* Logo/Brand Section */}
@@ -46,7 +42,7 @@ export const LoginFormCard = ({
 
       {/* Login Form */}
       <div className="bg-gray-800 rounded-3xl shadow-2xl border border-gray-700 p-8">
-        <form onSubmit={handleLogin} className="space-y-6">
+        <form onSubmit={handleSubmit(handleLogin)} className="space-y-6">
           {/* Email Field */}
           <div>
             <label
@@ -59,8 +55,7 @@ export const LoginFormCard = ({
               <input
                 id="email"
                 type="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
+                {...register("email")}
                 className="w-full px-4 py-4 bg-gray-700 border border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-white placeholder-gray-400"
                 placeholder="Enter your email"
                 required
@@ -83,8 +78,7 @@ export const LoginFormCard = ({
               <input
                 id="password"
                 type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={e => setPassword(e.target.value)}
+                {...register("password")}
                 className="w-full px-4 py-4 bg-gray-700 border border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-white placeholder-gray-400"
                 placeholder="Enter your password"
                 required

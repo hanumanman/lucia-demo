@@ -1,56 +1,44 @@
 "use client"
 
+import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
+import { FormProvider, useForm } from "react-hook-form"
+import z from "zod/v4"
 import { LoginFormCard } from "./_components/LoginFormCard"
 import { UserInfoCard } from "./_components/UserInfoCard"
 
-export interface IUser {
-  name: string
-  desc: string
+const loginSchema = z.object({
+  email: z.email("Invalid email format").min(1, "Email is required"),
+  password: z.string().min(4, "Password must be at least 4 characters long"),
+})
+
+export type TUser = z.infer<typeof loginSchema>
+
+const defaultValues: TUser = {
+  email: "user@gmail.com",
+  password: "alskjdzxmcz,c",
 }
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [showPassword, setShowPassword] = useState(false)
-  const [user, setUser] = useState<IUser>()
-
-  function handleLogin(e: React.FormEvent) {
-    e.preventDefault()
-
-    // Mock login validation
-    if (email && password && password.length > 3) {
-      setUser({
-        name: "John Doe",
-        desc: "Welcome back to AuthWDS!",
-      })
-    } else {
-      alert("Password must be longer than 3 chars")
-    }
-  }
+  const [user, setUser] = useState<TUser>()
 
   function handleLogout() {
     setUser(undefined)
-    setEmail("")
-    setPassword("")
   }
+
+  const methods = useForm<TUser>({
+    resolver: zodResolver(loginSchema),
+    defaultValues,
+  })
 
   // If user is logged in, show user info
   if (user) {
-    return (
-      <UserInfoCard user={user} handleLogout={handleLogout} email={email} />
-    )
+    return <UserInfoCard user={user} handleLogout={handleLogout} />
   }
 
   return (
-    <LoginFormCard
-      handleLogin={handleLogin}
-      email={email}
-      setEmail={setEmail}
-      password={password}
-      setPassword={setPassword}
-      showPassword={showPassword}
-      setShowPassword={setShowPassword}
-    />
+    <FormProvider {...methods}>
+      <LoginFormCard setUser={setUser} />
+    </FormProvider>
   )
 }

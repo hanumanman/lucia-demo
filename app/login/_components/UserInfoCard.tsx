@@ -1,12 +1,12 @@
+import { UserSVG } from "@/components/svgs/UserSVG"
 import Link from "next/link"
-import { IUser } from "../page"
+import { TUser } from "../page"
 
 interface Props {
-  user: IUser
+  user: TUser
   handleLogout: () => void
-  email: string
 }
-export const UserInfoCard = ({ user, email, handleLogout }: Props) => {
+export const UserInfoCard = ({ user, handleLogout }: Props) => {
   return (
     <div className="w-full max-w-4xl mx-auto">
       {/* Logo/Brand Section */}
@@ -25,30 +25,21 @@ export const UserInfoCard = ({ user, email, handleLogout }: Props) => {
           </svg>
         </div>
         <h1 className="text-3xl font-semibold text-white mb-2">Welcome!</h1>
-        <p className="text-gray-400">{user.desc}</p>
       </div>
 
       {/* User Info Card */}
       <div className="bg-gray-800 rounded-3xl shadow-2xl border border-gray-700 p-8">
         <div className="text-center">
           <div className="w-20 h-20 bg-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-            <span className="text-2xl font-bold text-white">
-              {user.name
-                .split(" ")
-                .map(n => n[0])
-                .join("")}
-            </span>
+            <UserSVG />
           </div>
 
-          <h2 className="text-2xl font-semibold text-white mb-2">
-            {user.name}
-          </h2>
           <p className="text-gray-400 mb-6">Logged in successfully</p>
 
           <div className="space-y-4">
             <div className="bg-gray-700 rounded-2xl p-4">
               <h3 className="text-sm font-medium text-gray-300 mb-2">Email</h3>
-              <p className="text-white">{email}</p>
+              <p className="text-white">{user.email}</p>
             </div>
 
             <div className="bg-gray-700 rounded-2xl p-4">
@@ -57,9 +48,6 @@ export const UserInfoCard = ({ user, email, handleLogout }: Props) => {
                 <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
                 <span className="text-green-400">Active</span>
               </div>
-            </div>
-            <div className="bg-gray-700 rounded-2xl p-4">
-              <span className="text-white">{user.desc}</span>
             </div>
           </div>
 
