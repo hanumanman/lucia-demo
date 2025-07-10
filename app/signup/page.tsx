@@ -69,7 +69,7 @@ export default function SignupPage() {
         <h1 className="text-3xl font-semibold text-white mb-2">
           Create Account
         </h1>
-        <p className="text-gray-400">Join us and get started today</p>
+        <p className="text-gray-400">Create an account to get started</p>
       </div>
 
       {/* Signup Form */}
@@ -190,7 +190,7 @@ export default function SignupPage() {
 
           {/* Password Requirements */}
           <div className="text-xs text-gray-400 space-y-1">
-            <p>Password must contain:</p>
+            <p>Password must include:</p>
             <ul className="list-disc list-inside space-y-1 ml-2">
               <li>At least 8 characters</li>
               <li>One uppercase letter</li>

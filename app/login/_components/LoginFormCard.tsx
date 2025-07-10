@@ -36,8 +36,8 @@ export const LoginFormCard = ({ setUser }: Props) => {
             />
           </svg>
         </div>
-        <h1 className="text-3xl font-semibold text-white mb-2">Welcome back</h1>
-        <p className="text-gray-400">Sign in to your account</p>
+        <h1 className="text-3xl font-semibold text-white mb-2">Welcome Back</h1>
+        <p className="text-gray-400">Sign in to continue</p>
       </div>
 
       {/* Login Form */}

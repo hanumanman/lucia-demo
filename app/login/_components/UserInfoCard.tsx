@@ -24,7 +24,7 @@ export const UserInfoCard = ({ user, handleLogout }: Props) => {
             />
           </svg>
         </div>
-        <h1 className="text-3xl font-semibold text-white mb-2">Welcome!</h1>
+        <h1 className="text-3xl font-semibold text-white mb-2">Welcome</h1>
       </div>
 
       {/* User Info Card */}
@@ -34,7 +34,7 @@ export const UserInfoCard = ({ user, handleLogout }: Props) => {
             <UserSVG />
           </div>
 
-          <p className="text-gray-400 mb-6">Logged in successfully</p>
+          <p className="text-gray-400 mb-6">Login Successful</p>
 
           <div className="space-y-4">
             <div className="bg-gray-700 rounded-2xl p-4">
@@ -63,7 +63,7 @@ export const UserInfoCard = ({ user, handleLogout }: Props) => {
       {/* Navigation */}
       <div className="text-center mt-8">
         <p className="text-gray-400">
-          Want to create a new account?{" "}
+          Don't have an account?{" "}
           <Link
             href={"/signup"}
             className="text-blue-400 hover:text-blue-300 font-medium transition-colors duration-200"

@@ -30,13 +30,12 @@ export default function Home() {
 
         {/* Subtitle */}
         <p className="text-xl text-gray-400 mb-4 max-w-2xl mx-auto leading-relaxed">
-          A modern authentication system with beautiful, Apple-inspired design.
+          A modern authentication system with a sleek, intuitive design.
         </p>
 
         {/* Description */}
         <p className="text-gray-500 max-w-lg mx-auto">
-          Secure, elegant, and user-friendly authentication built with Next.js
-          and Tailwind CSS.
+          Secure, elegant, and user-friendly authentication.
         </p>
       </div>
 
@@ -124,8 +123,7 @@ export default function Home() {
           </div>
           <h3 className="text-lg font-semibold text-white mb-2">Beautiful</h3>
           <p className="text-gray-400 text-sm">
-            Apple-inspired design with smooth animations and intuitive
-            interactions.
+            Sleek design with smooth, intuitive interactions.
           </p>
         </div>
 
