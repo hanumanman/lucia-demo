@@ -20,7 +20,31 @@
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(-45deg, #0d0d0d, #2c3e50);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

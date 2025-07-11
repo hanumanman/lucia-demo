@@ -25,11 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-gray-900 to-gray-200`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
       >
         <div className="min-h-screen flex items-center justify-center p-4 relative">
-          {/* Background overlay for extra depth and cross-gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20  to-white/10"></div>
           <div className="relative z-10">{children}</div>
         </div>
       </body>
