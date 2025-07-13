@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1752387685630,
+      "tag": "0000_glamorous_pyro",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1752388895440,
+      "tag": "0001_redundant_sabra",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1752389045137,
+      "tag": "0002_fine_beyonder",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1752389339125,
+      "tag": "0003_demonic_doctor_spectrum",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1752398551865,
+      "tag": "0004_melodic_scalphunter",
+      "breakpoints": true
+    }
+  ]
+}

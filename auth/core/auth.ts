@@ -1,4 +1,7 @@
+import { db } from "@/db"
+
 import { SessionWithToken } from "./types"
+import { sessionsTable } from "@/db/schema"
 
 // This encoder wastes 3/8 of the random bits. You can optimize it and get better performance by using all the generated random bits
 export function generateSecureRandomString(): string {
@@ -23,7 +26,7 @@ async function hashSecret(secret: string): Promise<Uint8Array> {
   return new Uint8Array(secretHashbuffer)
 }
 
-export async function createSession(dbPool: any) {
+export async function createSession(): Promise<SessionWithToken> {
   const now = new Date()
 
   const id = generateSecureRandomString()
@@ -38,4 +41,12 @@ export async function createSession(dbPool: any) {
     createdAt: now,
     token,
   }
+
+  await db.insert(sessionsTable).values({
+    id: session.id,
+    secretHash: session.secretHash,
+    createdAt: Math.floor(session.createdAt.getTime() / 1000),
+  })
+
+  return session
 }
