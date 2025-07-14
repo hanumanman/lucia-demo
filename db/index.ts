@@ -1,5 +1,5 @@
-import { drizzle } from "drizzle-orm/libsql"
 import { env } from "@/lib/env"
+import { drizzle } from "drizzle-orm/libsql"
 
 export const db = drizzle({
   connection: {

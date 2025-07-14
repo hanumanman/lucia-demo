@@ -1,6 +1,5 @@
 import { z } from "zod/v4"
 
-// Define the schema for environment variables
 const envSchema = z.object({
   // Node environment
   NODE_ENV: z
@@ -18,19 +17,15 @@ const envSchema = z.object({
   DATABASE_AUTH_TOKEN: z.string().min(1, "DATABASE_AUTH_TOKEN is required"),
 })
 
-// Type inference from the schema
 export type Env = z.infer<typeof envSchema>
 
-// Validate and parse environment variables
 function validateEnv(): Env {
   const result = envSchema.safeParse(process.env)
 
   if (!result.success) {
     console.error("❌ Invalid environment variables:")
 
-    // Create a detailed error message
     const errorMessages = z.prettifyError(result.error)
-
     throw new Error(
       `Environment validation failed:\n${errorMessages}\n\nPlease check your .env file and ensure all required variables are set.`
     )
@@ -39,5 +34,4 @@ function validateEnv(): Env {
   return result.data
 }
 
-// Export the validated environment variables
 export const env = validateEnv()
