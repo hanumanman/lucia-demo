@@ -1,9 +1,10 @@
-export interface Session {
+export interface ISession {
   id: string
   secretHash: Uint8Array
   createdAt: Date
+  lastVerifiedAt: Date
 }
 
-export interface SessionWithToken extends Session {
+export interface ISessionWithToken extends ISession {
   token: string
 }

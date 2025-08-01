@@ -11,8 +11,9 @@ export type SelectUser = typeof usersTable.$inferSelect
 
 export const sessionsTable = sqliteTable("sessions", {
   id: text("id").primaryKey(),
-  secretHash: blob("secret_hash"),
-  createdAt: integer("created_at"),
+  secretHash: blob("secret_hash").notNull(),
+  createdAt: integer("created_at").notNull(),
+  lastVerifiedAt: integer("last_verified_at").notNull(),
 })
 
 export type InsertSession = typeof sessionsTable.$inferInsert
