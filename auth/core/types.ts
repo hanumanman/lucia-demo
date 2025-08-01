@@ -1,3 +1,8 @@
+export interface IValidatedSession {
+  id: string
+  createdAt: Date
+}
+
 export interface ISession {
   id: string
   secretHash: Uint8Array
